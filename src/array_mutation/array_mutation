@@ -1,0 +1,38 @@
+import json
+
+
+RECORD_ID = 0
+
+def generate_record_id() -> int:
+    global RECORD_ID
+    RECORD_ID += 1
+    print(str(RECORD_ID))
+    return RECORD_ID
+
+
+class Mention:
+    _id: int
+    text: str
+
+
+class Post:
+    _id: int
+    value: str
+    mentions: list[Mention]
+
+
+class ContentCreator:
+    _id: int
+    name: str
+    posts: list[Post]
+
+
+def generate_update_statement(
+        original_doc: str,
+        mutation_doc: str,
+        # update_statement_doc: str
+        ) -> str:
+    original = json.loads(original_doc)
+    mutation = json.loads(mutation_doc)
+    update_result = {}
+    return json.dumps(update_result)
